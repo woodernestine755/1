@@ -1,0 +1,39 @@
+class Node<T> {
+    public T Data { get; set; }
+    public Node<T> Next { get; set; }
+
+    public Node(T data) {
+        Data = data;
+    }
+}
+
+class LinkedList<T> {
+    private Node<T> head;
+
+    public void Add(T data) {
+        Node<T> newNode = new Node<T>(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node<T> current = head;
+            while (current.Next != null) {
+                current = current.Next;
+            }
+            current.Next = newNode;
+        }
+    }
+
+    public void Print() {
+        Node<T> current = head;
+        while (current != null) {
+            Console.WriteLine(current.Data);
+            current = current.Next;
+        }
+    }
+}
+
+LinkedList<int> list = new LinkedList<int>();
+list.Add(1);
+list.Add(2);
+list.Add(3);
+list.Print();
